@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DuAnBao.Models.Article>
+
+@{
+    ViewBag.Title = "Approve Articles";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/ApproveArticles.css" />
+
+<div class="approve-articles">
+    <h2>DANH SÁCH NHÀ BÁO</h2>
+
+    <!-- Search Section -->
+    <div class="search">
+        <label for="journalistId">Mã bài báo:</label>
+        <input type="text" id="journalistId" placeholder="Nhập mã bài báo" />
+
+        <label for="journalistName">Tên bài báo:</label>
+        <input type="text" id="journalistName" placeholder="Nhập tên bài báo" />
+
+        <button type="button" class="button">Tìm kiếm</button>
+    </div>
+
+    <!-- Table Section -->
+    <table class="articles-table" id="approveTable">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã bài báo</th>
+                <th>Tên bài báo</th>
+                <th>Nội dung</th>
+                <th>Ngày phát hành</th>
+
+            </tr>
+        </thead>
+        @*<a href="~/Content/bootstrap-reboot.rtl.min.css.map">~/Content/bootstrap-reboot.rtl.min.css.map</a>*@
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                int index = 1;
+                foreach (var article in Model)
+                {
+                    <tr>
+                        <td>@index</td>
+                        <td>@article.ArticleId</td>
+                        <td class="left">@article.Title</td>
+                        <td class="left">@article.Summary</td>
+                        <td>@article.PublishedDate</td>
+                    </tr>
+                    index++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="no-data">Không có bài viết nào</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+s

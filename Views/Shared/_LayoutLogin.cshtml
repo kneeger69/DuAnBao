@@ -1,0 +1,140 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - WebApp</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="sidebar-and-logo">
+            <!-- Menu khi sidebar collapse -->
+            <span id="menu-icon" class="menu-icon" onclick="toggleSidebar()">&#9776;</span>
+            <!-- Menu  khi sidebar expand -->
+            <span id="collapse-icon" class="menu-icon collapse-icon" onclick="toggleSidebar()">&#10005;</span>
+            <div class="logo">
+                <h1 class="ntu-logo">
+                    BÁO CHÍ KHOA HỌC CÔNG NGHỆ NTU <br />
+                    TRƯỜNG ĐẠI HỌC NHA TRANG
+                </h1>
+            </div>
+        </div>
+        <ul class="navbar-menu">
+            <li>
+                <a class="signup-button" href="@Url.Action("SignUp", "Articles")">Đăng ký</a>
+            </li>
+            <li>
+                <a class="signin-button" href="@Url.Action("SignIn", "Articles")">Đăng nhập</a>
+            </li>
+            <li>
+                <select>
+                    <option value="en">Tiếng Việt</option>
+                    <option value="vi">English</option>
+                </select>
+            </li>
+        </ul>
+
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <span id="collapse-icon" class="collapse-icon" onclick="toggleSidebar()">&#10005;</span>
+        <ul class="menu">
+            <li>@Html.ActionLink("Trang chủ", "Index", "Articles")</li>
+            <li>@Html.ActionLink("Giới thiệu", "Introduce", "Articles")</li>
+            <li>@Html.ActionLink("Báo mới", "Notification", "Articles")</li>
+            <li>@Html.ActionLink("Gửi bài", "Send", "Articles")</li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0)" onclick="toggleDropdown()">Duyệt bài &#9662;</a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("Pending", "Articles")">Bài chờ duyệt</a></li>
+                    <li><a href="@Url.Action("Approve", "Articles")">Bài đã duyệt</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <div class="main-content">
+
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- About Section -->
+            <div class="footer-section about">
+                <h3>Về chúng tôi</h3>
+                <p>
+                    Nhóm dự án gồm các sinh viên ngành Công nghệ Thông tin tại Đại học Nha Trang, với mục tiêu phát triển phần mềm quản lý bài báo khoa học giúp sinh viên và giảng viên dễ dàng truy cập và sử dụng tài nguyên nghiên cứu. Chúng tôi cam kết tạo ra một giải pháp hiệu quả, đáp ứng nhu cầu thực tiễn trong học tập và nghiên cứu.
+                </p>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="footer-section contact">
+                <h3>Liên hệ</h3>
+                <p>Địa chỉ: 02 Nguyễn Đình Chiểu, Nha Trang, Việt Nam</p>
+                <p>Điện thoại: +84 123 456 789</p>
+                <p>Email: info@ntu.edu.vn</p>
+            </div>
+
+            <!-- Social Media Section -->
+            <div class="footer-section social">
+                <h3>Kết nối với chúng tôi</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Báo Chí Khoa Học Công Nghệ NTU | Thiết kế bởi Nhóm Nghiên cứu NTU</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var menuIcon = document.getElementById("menu-icon");
+            var collapseIcon = document.getElementById("collapse-icon");
+            var header = document.querySelector('header');
+            var container = document.querySelector('.container');
+
+            if (sidebar.classList.contains("active")) {
+                sidebar.classList.remove("active");
+                header.classList.remove("active");
+                container.classList.remove("active");
+                menuIcon.style.display = "inline-block";
+                collapseIcon.style.display = "none";
+            } else {
+                sidebar.classList.add("active");
+                header.classList.add("active");
+                container.classList.add("active");
+                menuIcon.style.display = "none";
+                collapseIcon.style.display = "inline-block";
+            }
+        }
+        function toggleDropdown() {
+            var dropdown = document.querySelector(".dropdown");
+            dropdown.classList.toggle("active");
+        }
+        document.addEventListener("click", function (event) {
+            var dropdown = document.querySelector(".dropdown");
+            if (!event.target.closest(".dropdown")) {
+                dropdown.classList.remove("active");
+            }
+        });
+    </script>
+</body>
+</html>

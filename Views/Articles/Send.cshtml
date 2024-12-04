@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DuAnBao.Models.Article>
+@{
+    ViewBag.Title = "Send";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/Send.css" />
+
+<div class="main-body">
+    <div class="main-content">
+
+        <div class="send-form">
+            <h2>Gửi bài</h2>
+            <div class="form-section">
+                <div class="input-group">
+                    <label for="title">Tiêu đề</label>
+                    <textarea id="title" placeholder="Nhập tiêu đề..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="author">Tác giả</label>
+                        <textarea id="author" placeholder="Nhập tên tác giả..."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="time">Thời gian</label>
+                        <textarea id="time" placeholder="Nhập thời gian..."></textarea>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="introduction">Mở đầu</label>
+                    <div class="contenteditable-div" contenteditable="true" role="textbox">
+                        <textarea id="introduction" placeholder="Nhập phần mở đầu..."></textarea>
+                    </div>
+                </div>
+
+                <div class="image-upload">
+                    <button class="upload-btn">Up Images</button>
+                </div>
+
+                <div class="input-group">
+                    <label for="content">Nội dung</label>
+                    <div class="contenteditable-div" contenteditable="true" role="textbox">
+                        <textarea id="content" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+                </div>
+
+                <div class="image-upload">
+                    <button class="upload-btn">Up Images</button>
+                </div>
+
+                <div class="input-group">
+                    <label for="conclusion">Kết luận</label>
+                    <div class="contenteditable-div" contenteditable="true" role="textbox">
+                        <textarea id="conclusion" placeholder="Nhập kết luận..."></textarea>
+                    </div>
+                </div>
+                <div class="submit-btn">
+                    <button>Gửi bài</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

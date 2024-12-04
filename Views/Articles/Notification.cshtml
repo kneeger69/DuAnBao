@@ -1,0 +1,19 @@
+﻿@model IEnumerable<DuAnBao.Models.Article>
+@{
+    ViewBag.Title = "Notification";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/Notification.css" />
+
+<div class="notification-list">
+    <h2>Notification</h2>
+    @foreach (var article in Model)
+    {
+        <div class="notification-item">
+            <h3><a href="@Url.Action("Details", "Articles", new { id = article.ArticleId })">@article.Title</a></h3>
+            <p>@article.Summary</p>
+        </div>
+    }
+</div>
+
+

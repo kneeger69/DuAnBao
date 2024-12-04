@@ -1,0 +1,66 @@
+﻿        @model IEnumerable<DuAnBao.Models.Article>
+
+        @{
+            ViewBag.Title = "Index";
+            Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+        }
+        <div class="content">
+            <div class="main-layout">
+
+                <div class="statistics-section">
+                    <div class="stat">
+                        <h3>@ViewBag.MagazinesCount</h3>
+                        <p>Số tạp chí đã xuất bản</p>
+                    </div>
+                    <div class="stat">
+                        <h3>@ViewBag.ArticlesCount</h3>
+                        <p>Số bài báo đã xuất bản</p>
+                    </div>
+                    <div class="stat">
+                        <h3>@ViewBag.VisitCount</h3>
+                        <p>Lượt truy cập</p>
+                    </div>
+                    <div class="stat">
+                        <h3>@ViewBag.DownloadCount</h3>
+                        <p>Lượt tải về</p>
+                    </div>
+                </div>
+                <div class="main-body">
+                    <div class="top-row">
+                        <div class="video-section">
+                            <h2>Video nổi bật</h2>
+                            <div class="video-placeholder">
+                                <iframe width="90%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <div class="notification-section">
+                            <h2>Tin tức nổi bật</h2>
+                            <ul>
+                                @if (ViewBag.LatestArticles != null)
+                                {
+                                    foreach (var article in ViewBag.LatestArticles)
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("Details", "Articles", new { id = article.ArticleId })">
+                                               @article.Title
+                                            </a>
+                                        </li>
+                                        <br/>
+                                    }
+                                }
+                            </ul>
+                        </div>  
+                    </div>
+
+                    <div class="introduce-section">
+                        <h2>Giới thiệu</h2>
+                        <p>Công nghệ thông tin là một lĩnh vực hấp dẫn, đặc biệt trong bối cảnh phát triển mạnh mẽ hiện nay, thâm nhập vào mọi ngành nghề. Đây là lựa chọn phổ biến của giới trẻ và đòi hỏi sự cập nhật liên tục về công nghệ và xu hướng mới để mở rộng cơ hội nghề nghiệp.</p>
+                        <p>Việc quản lý và sử dụng các bài báo khoa học trong lĩnh vực này ngày càng trở nên cấp thiết, hỗ trợ các nhà nghiên cứu, sinh viên và giảng viên dễ dàng theo dõi, lưu trữ, và tìm kiếm bài báo nhanh chóng.</p>
+                        <p>Sinh viên ngành Công nghệ thông tin tại Đại học Nha Trang hiện chưa có nền tảng chính thức cho các bài báo khoa học – nguồn tài liệu quan trọng trong việc chia sẻ tri thức và phát triển nghiên cứu. Do đó, phần mềm quản lý bài báo khoa học sẽ là một giải pháp hiện đại, giúp tăng khả năng tiếp cận và sử dụng hiệu quả tài nguyên khoa học trong cộng đồng sinh viên Công nghệ thông tin tại Đại học Nha Trang.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
